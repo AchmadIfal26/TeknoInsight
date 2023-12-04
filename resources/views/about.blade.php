@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/style.css">
-    <title>TeknoInsight | About</title>
+    <title>TeknoInsight | Aboutt</title>
 </head>
 <body>
     <h1>Ini Halaman About</h1>
