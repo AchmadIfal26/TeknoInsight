@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\PostController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,17 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
-});
-
-Route::get('/about', function () {
-    return view('about', [
-        "name" => "Al Farazy",
-        "email" => "sidorukun0@gmail.com",
-        "image" => "ifal.jpg"
+    return view('home', [
+        "title" => "Home"
     ]);
 });
 
-Route::get('/blog', function () {
-    return view('posts');
-});
+Route::get('/about', [AboutController::class, 'index']);
+
+Route::get('/posts', [PostController::class, 'index']);
+Route::get('posts/{slug}', [PostController::class, 'show']);
