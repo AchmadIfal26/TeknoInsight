@@ -16,7 +16,7 @@
             <form action="/register" method="post">
                 @csrf
                 <div class="form-floating">
-                    <input type="text" name="name" class="form-control rounded-top @error('name') is-invalid @enderror" id="name" placeholder="Name" value="{{ old('name') }}" required>
+                    <input type="text" name="name" class="form-control rounded-top @error('name') is-invalid @enderror" id="name" placeholder="Name" value="{{ old('name') }}" required autofocus>
                     <label for="name">Name</label>
                     @error('name')
                         <div class="invalid-feedback">
