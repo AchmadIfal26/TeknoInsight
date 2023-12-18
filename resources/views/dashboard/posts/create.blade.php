@@ -29,28 +29,27 @@
                 <label for="category" class="form-label">Category</label>
                 <select class="form-select" name="category_id">
                     @foreach ($categories as $category)
-                        @if (old('category_id') == $category->id)
-                            <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
-                        @else
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endif
+                        <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                            {{ $category->name }}
+                        </option>
                     @endforeach
-                  </select>
+                </select>
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Post Image</label>
-                <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
-                    @error('image')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-              </div>
+                <img src="" alt="" class="img-preview img-fluid mb-3 col-sm-5" style="display: none;">
+                <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
+                @error('image')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
             <div class="mb-3">
                 <label for="body" class="form-label">Body</label>
-                    @error('body')
-                        <p class="text-danger">{{ $message }}</p>
-                    @enderror
+                @error('body')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
                 <input id="body" type="hidden" name="body" value="{{ old('body') }}">
                 <trix-editor input="body"></trix-editor>
             </div>
@@ -59,6 +58,8 @@
           </form>
     </div>
 
-    <script src="/js/checkSlug.js"></script>
+    <script src="{{ asset('js/previewImage.js') }}"></script>
+    <script src="{{ asset('js/checkSlug.js') }}"></script>
 
 @endsection
+
